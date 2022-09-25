@@ -21,3 +21,5 @@ LTO_ENABLE = yes
 SPLIT_KEYBOARD = yes
 OLED_ENABLE = yes
 OLED_DRIVER = SSD1306
+DEBOUNCE_TYPE = sym_eager_pk # Debounce eagerly (report change immediately), keep per-key timers. We can use
+                             # this because the sofle does not have to deal with noise.
