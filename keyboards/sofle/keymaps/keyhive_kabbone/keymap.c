@@ -26,42 +26,61 @@
 
 // Light combinations
 #define SET_INDICATORS(hsv) \
-	{0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
-    {35+0, 1, hsv}
+    {0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
+    {37+0, 1, hsv}
+
 #define SET_UNDERGLOW(hsv) \
-	{1, 6, hsv}, \
-    {35+1, 6,hsv}
+    { 1, 1, hsv}, \
+    { 4, 1, hsv}, \
+    {10, 1, hsv}, \
+    {13, 1, hsv}, \
+    {16, 1, hsv}, \
+    {25, 1, hsv}, \
+    {28, 1, hsv}, \
+    {36, 2, hsv}, \
+    {45, 1, hsv}, \
+    {48, 1, hsv}, \
+    {57, 1, hsv}, \
+    {60, 1, hsv}, \
+    {63, 1, hsv}, \
+    {69, 1, hsv}, \
+    {72, 1, hsv}
+
 #define SET_NUMPAD(hsv)     \
-	{35+15, 5, hsv},\
-	  {35+22, 3, hsv},\
-	  {35+27, 3, hsv}
+    {37+15, 5, hsv},\
+    {37+22, 3, hsv},\
+    {37+27, 3, hsv}
+
 #define SET_NUMROW(hsv) \
-	{10, 2, hsv}, \
-		{20, 2, hsv}, \
-		{30, 2, hsv}, \
-	  {35+ 10, 2, hsv}, \
-	  {35+ 20, 2, hsv}, \
-	  {35+ 30, 2, hsv}
-#define SET_INNER_COL(hsv)	\
-	{33, 4, hsv}, \
-	  {35+ 33, 4, hsv}
+    { 5, 2, hsv}, \
+    {17, 2, hsv}, \
+    {29, 2, hsv}, \
+    {43, 2, hsv}, \
+    {55, 2, hsv}, \
+    {67, 2, hsv}
+
+#define SET_INNER_COL(hsv) \
+    {30, 4, hsv}, \
+    {40, 4, hsv}
 
 #define SET_OUTER_COL(hsv) \
-	{7, 4, hsv}, \
-	  {35+ 7, 4, hsv}
-#define SET_THUMB_CLUSTER(hsv) 	\
-	{25, 2, hsv}, \
-	  {35+ 25, 2, hsv}
-#define SET_LAYER_ID(hsv) 	\
-	{0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
-    {35+0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
-		{1, 6, hsv}, \
-    {35+1, 6, hsv}, \
-		{7, 4, hsv}, \
-	  {35+ 7, 4, hsv}, \
-		{25, 2, hsv}, \
-	  {35+ 25, 2, hsv}
+    { 0, 1, hsv}, \
+    { 2, 2, hsv}, \
+    { 5, 1, hsv}, \
+    {68, 1, hsv}, \
+    {70, 2, hsv}, \
+    {73, 1, hsv}
 
+#define SET_THUMB_CLUSTER(hsv) \
+    {34, 2, hsv}, \
+    {38, 2, hsv}
+
+#define SET_LAYER_ID(hsv) \
+    SET_UNDERGLOW(hsv), \
+    SET_OUTER_COL(hsv), \
+    SET_INNER_COL(hsv), \
+    {0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
+    {37+0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}
 
 enum sofle_layers {
     _DEFAULTS = 0,
