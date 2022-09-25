@@ -30,8 +30,8 @@
     {37+0, 1, hsv}
 
 #define SET_UNDERGLOW(hsv) \
-    { 1, 1, hsv}, \
-    { 4, 1, hsv}, \
+    {1, 1, hsv}, \
+    {4, 1, hsv}, \
     {10, 1, hsv}, \
     {13, 1, hsv}, \
     {16, 1, hsv}, \
@@ -46,41 +46,61 @@
     {69, 1, hsv}, \
     {72, 1, hsv}
 
-#define SET_NUMPAD(hsv)     \
-    {37+15, 5, hsv},\
-    {37+22, 3, hsv},\
-    {37+27, 3, hsv}
+#define SET_NUMPAD(hsv) \
+   {37+15, 5, hsv},\
+   {37+22, 3, hsv},\
+   {37+27, 3, hsv}
 
 #define SET_NUMROW(hsv) \
-    { 5, 2, hsv}, \
-    {17, 2, hsv}, \
-    {29, 2, hsv}, \
-    {43, 2, hsv}, \
-    {55, 2, hsv}, \
-    {67, 2, hsv}
+   { 5, 2, hsv}, \
+   {17, 2, hsv}, \
+   {29, 2, hsv}, \
+   {43, 2, hsv}, \
+   {55, 2, hsv}, \
+   {67, 2, hsv}
 
 #define SET_INNER_COL(hsv) \
-    {30, 4, hsv}, \
-    {40, 4, hsv}
+   {30, 4, hsv}, \
+   {40, 4, hsv}
 
 #define SET_OUTER_COL(hsv) \
-    { 0, 1, hsv}, \
-    { 2, 2, hsv}, \
-    { 5, 1, hsv}, \
-    {68, 1, hsv}, \
-    {70, 2, hsv}, \
-    {73, 1, hsv}
+   {0, 1, hsv}, \
+   {2, 2, hsv}, \
+   {5, 1, hsv}, \
+   {68, 1, hsv}, \
+   {70, 2, hsv}, \
+   {73, 1, hsv}
 
 #define SET_THUMB_CLUSTER(hsv) \
-    {34, 2, hsv}, \
-    {38, 2, hsv}
+   {34, 2, hsv}, \
+   {38, 2, hsv}
 
 #define SET_LAYER_ID(hsv) \
-    SET_UNDERGLOW(hsv), \
-    SET_OUTER_COL(hsv), \
-    SET_INNER_COL(hsv), \
-    {0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
-    {37+0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}
+   {0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
+   {37+0, 1, HSV_OVERRIDE_HELP(hsv, INDICATOR_BRIGHTNESS)}, \
+   {1, 1, hsv}, \
+   {4, 1, hsv}, \
+   {10, 1, hsv}, \
+   {13, 1, hsv}, \
+   {16, 1, hsv}, \
+   {25, 1, hsv}, \
+   {28, 1, hsv}, \
+   {36, 2, hsv}, \
+   {45, 1, hsv}, \
+   {48, 1, hsv}, \
+   {57, 1, hsv}, \
+   {60, 1, hsv}, \
+   {63, 1, hsv}, \
+   {69, 1, hsv}, \
+   {72, 1, hsv}, \
+   {0, 1, hsv}, \
+   {2, 2, hsv}, \
+   {5, 1, hsv}, \
+   {68, 1, hsv}, \
+   {70, 2, hsv}, \
+   {73, 1, hsv}, \
+   {30, 4, hsv}, \
+   {40, 4, hsv}
 
 enum sofle_layers {
     _DEFAULTS = 0,
@@ -348,18 +368,15 @@ const rgblight_segment_t PROGMEM layer_command_lights[] = RGBLIGHT_LAYER_SEGMENT
 
 //_NUMPAD
 const rgblight_segment_t PROGMEM layer_numpad_lights[] = RGBLIGHT_LAYER_SEGMENTS(
-	SET_INDICATORS(HSV_ORANGE),
+    SET_INDICATORS(HSV_ORANGE),
     SET_UNDERGLOW(HSV_ORANGE),
-	SET_NUMPAD(HSV_BLUE),
-    {7, 4, HSV_ORANGE},
-    {25, 2, HSV_ORANGE},
-    {35+6, 4, HSV_ORANGE},
-    {35+25, 2, HSV_ORANGE}
+    SET_NUMPAD(HSV_BLUE),
+    SET_OUTER_COL(HSV_ORANGE)
     );
 // _SWITCHER   // light up top row
 const rgblight_segment_t PROGMEM layer_switcher_lights[] = RGBLIGHT_LAYER_SEGMENTS(
-	SET_LAYER_ID(HSV_GREEN),
-	SET_NUMROW(HSV_GREEN)
+    SET_LAYER_ID(HSV_GREEN),
+    SET_NUMROW(HSV_GREEN)
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
