@@ -106,7 +106,6 @@ enum sofle_layers {
     _DEFAULTS = 0,
     _COLEMAKDH = 0,
     _QWERTY,
-    _COLEMAK,
     _LOWER,
     _RAISE,
     _ADJUST,
@@ -116,13 +115,67 @@ enum sofle_layers {
 
 enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
-    KC_COLEMAK,
     KC_COLEMAKDH,
     KC_LOWER,
     KC_RAISE,
     KC_ADJUST,
     KC_D_MUTE
 };
+
+enum unicode_names {
+    DESSS,
+    DEBAE,
+    DESAE,
+    DEBOE,
+    DESOE,
+    DEBUE,
+    DESUE
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [DESSS]  = 0x00DF,  // ß
+    [DEBAE] = 0x00C4,  // Ä
+    [DESAE]  = 0x00E4, // ä
+    [DEBOE]  = 0x00D6,  // Ö
+    [DESOE] = 0x00F6,  // ö
+    [DEBUE]  = 0x00DC, // Ü
+    [DESUE]  = 0x00FC, // ü
+};
+
+// Left-hand home row mods
+#define HOME_A LCTL_T(KC_A)
+#define HOME_R LSFT_T(KC_R)
+#define HOME_S LGUI_T(KC_S)
+#define HOME_T LALT_T(KC_T)
+
+// Right-hand home row mods
+#define HOME_N LALT_T(KC_N)
+#define HOME_E RGUI_T(KC_E)
+#define HOME_I RSFT_T(KC_I)
+#define HOME_O RCTL_T(KC_O)
+
+bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode) {
+        case HOME_A:
+            return true;
+        case HOME_R:
+            return true;
+        case HOME_S:
+            return true;
+        case HOME_T:
+            return true;
+        case HOME_N:
+            return true;
+        case HOME_E:
+            return true;
+        case HOME_I:
+            return true;
+        case HOME_O:
+            return true;
+        default:
+            return false;
+    }
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
@@ -155,35 +208,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /*
- * COLEMAK
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TAB  |   Q  |   W  |   F  |   P  |   G  |                    |   J  |   L  |   U  |   Y  |   ;  | Bspc |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |LShift|   A  |   R  |   S  |   T  |   D  |-------.    ,-------|   H  |   N  |   E  |   I  |   O  |  '   |
- * |------+------+------+------+------+------|  MUTE |    |DISCORD|------+------+------+------+------+------|
- * | LCTR |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   K  |   M  |   ,  |   .  |   /  |LShift|
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | Bspc | WIN  |LOWER | Enter| /Space  /       \Enter \  |SPACE |RAISE | RCTR | RAlt |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-[_COLEMAK] = LAYOUT(
-  //,------------------------------------------------.                    ,---------------------------------------------------.
-  KC_TRNS,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                      LT(_SWITCH,KC_6),    KC_7,   KC_8,    KC_9,    KC_0,    KC_TRNS,
-  //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-  KC_TRNS,  KC_Q,   KC_W,    KC_F,    KC_P,    KC_G,                      KC_J,    KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_TRNS,
-  //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-  KC_TRNS,  KC_A,   KC_R,    KC_S,    KC_T,    KC_D,                      KC_H,    KC_N,   KC_E,    KC_I,    KC_O,    KC_TRNS,
-  //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-  KC_TRNS,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,  KC_TRNS,    KC_TRNS,KC_K,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_TRNS,
-  //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,    KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS
-  //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
-),
-
-/*
  * COLEMAK-DH
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
@@ -199,11 +223,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            `----------------------------------'           '------''---------------------------'
  */
 [_COLEMAKDH] = LAYOUT(
-  KC_GRV , KC_1        , KC_2        , KC_3        , KC_4        , KC_5   ,                       KC_6 , KC_7 , KC_8   , KC_9  , KC_0   , KC_ESC ,
-  KC_ESC , KC_Q        , KC_W        , KC_F        , KC_P        , KC_B   ,                       KC_J , KC_L , KC_U   , KC_Y  , KC_MINS, KC_BSLS,
-  KC_TAB , LCTL_T(KC_A), LSFT_T(KC_R), LGUI_T(KC_S), LALT_T(KC_T), KC_G   ,                       KC_M , KC_N , KC_E   , KC_I  , KC_O   , KC_SCLN,
-  KC_LGUI, KC_Z        , KC_X        , KC_C        , KC_D        , KC_V   , KC_MUTE,       KC_NO, KC_K , KC_H , KC_COMM, KC_DOT, KC_SLSH, KC_EQL,
-                                           KC_LCTRL,KC_LALT,KC_LSFT,KC_ENT,MO(_LOWER),       KC_BSPC,KC_SPC,MO(_RAISE), KC_LBRC, KC_RBRC
+  KC_GRV , KC_1  , KC_2  , KC_3  , KC_4  , KC_5 ,                       KC_6 , KC_7  , KC_8   , KC_9  , KC_0   , KC_ESC ,
+  KC_ESC , KC_Q  , KC_W  , KC_F  , KC_P  , KC_B ,                       KC_J , KC_L  , KC_U   , KC_Y  , KC_MINS, KC_BSLS,
+  KC_TAB , HOME_A, HOME_R, HOME_S, HOME_T, KC_G ,                       KC_M , HOME_N, HOME_E , HOME_I, HOME_O , KC_SCLN,
+  KC_LGUI, KC_Z  , KC_X  , KC_C  , KC_D  , KC_V , KC_MUTE,       KC_NO, KC_K , KC_H  , KC_COMM, KC_DOT, KC_SLSH, KC_EQL,
+                  KC_LCTRL,KC_LALT,KC_LSFT,KC_ENT,MO(_LOWER),       KC_BSPC,KC_SPC,MO(_RAISE), KC_LBRC, KC_RBRC
 ),
 
 /* LOWER
@@ -268,7 +292,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
   QK_BOOT, XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
-  RGB_TOG, RGB_HUI,RGB_SAI, RGB_VAI, KC_COLEMAKDH,KC_COLEMAK,             C(G(KC_LEFT)),KC_NO,KC_NO,C(G(KC_RGHT)),XXXXXXX, XXXXXXX,
+  RGB_TOG, RGB_HUI,RGB_SAI, RGB_VAI, KC_COLEMAKDH,_______,             C(G(KC_LEFT)),KC_NO,KC_NO,C(G(KC_RGHT)),XXXXXXX, XXXXXXX,
   //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
   RGB_MOD, RGB_HUD,RGB_SAD, RGB_VAD, XXXXXXX,KC_QWERTY,XXXXXXX,   XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
   //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
@@ -437,9 +461,6 @@ static void print_status_narrow(void) {
         case _QWERTY:
             oled_write_ln_P(PSTR("Qwrt"), false);
             break;
-        case _COLEMAK:
-            oled_write_ln_P(PSTR("Clmk"), false);
-            break;
         case _COLEMAKDH:
             oled_write_ln_P(PSTR("CmkDH"), false);
             break;
@@ -451,7 +472,6 @@ static void print_status_narrow(void) {
     // Print current layer
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
-        case _COLEMAK:
         case _QWERTY:
         case _COLEMAKDH:
             oled_write_P(PSTR("Base\n"), false);
@@ -499,11 +519,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
-            }
-            return false;
-        case KC_COLEMAK:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_COLEMAK);
             }
             return false;
         case KC_COLEMAKDH:
@@ -559,7 +574,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) {
         switch (get_highest_layer(layer_state)) {
-            case _COLEMAK:
             case _QWERTY:
             case _COLEMAKDH:
                 if (clockwise) {
