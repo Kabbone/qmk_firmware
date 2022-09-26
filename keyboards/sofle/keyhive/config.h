@@ -31,7 +31,7 @@
 
 #define DIODE_DIRECTION COL2ROW
 
-#define TAPPING_TERM 100
+#define TAPPING_TERM 200
 #define DEBOUNCE 5
 // Reduce input latency by lowering the USB polling interval
 // from its 10ms default to the 1ms minimum that USB 1.x (Full Speed) allows:

@@ -40,12 +40,12 @@ led_config_t g_led_config = {
         {  3,    7,  15,  19,  27,  31},
         {  2,    8,  14,  20,  26,  32},
         {  0,    9,  12,  21,  24,  33},
-        {            11,  22,  23,  34,  35,  NO_LED },
-        {               43,  44,  55,  56,  67,  68},
-        {               42,  46,  54,  58,  66,  70},
-        {               41,  47,  53,  59,  65,  71},
-        {               40,  49,  52,  61,  64,  73},
-        {  NO_LED, 38,  39,  50,  51,  62}
+        {            11,  22,  23,  34,  35, },
+        {            43,  44,  55,  56,  67,  68},
+        {            42,  46,  54,  58,  66,  70},
+        {            41,  47,  53,  59,  65,  71},
+        {            40,  49,  52,  61,  64,  73},
+        {  38,  39,  50,  51,  62}
     },
     {
         // Left side Matrix leds are positioned column wise
@@ -88,8 +88,8 @@ led_config_t g_led_config = {
         LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,
         LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_UNDERGLOW, LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_UNDERGLOW, LED_FLAG_KEYLIGHT,
         LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,
-        LED_FLAG_KEYLIGHT,  LED_FLAG_UNDERGLOW, LED_FLAG_NONE,
-        LED_FLAG_NONE,      LED_FLAG_UNDERGLOW, LED_FLAG_KEYLIGHT,
+        LED_FLAG_KEYLIGHT,  LED_FLAG_UNDERGLOW,
+        LED_FLAG_UNDERGLOW, LED_FLAG_KEYLIGHT,
         LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
         LED_FLAG_KEYLIGHT,  LED_FLAG_UNDERGLOW, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,  LED_FLAG_UNDERGLOW, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
         LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,  LED_FLAG_KEYLIGHT,
