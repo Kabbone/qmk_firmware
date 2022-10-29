@@ -14,7 +14,7 @@
   * You should have received a copy of the GNU General Public License
   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-  #pragma once
+#pragma once
 
 
 //#define USE_MATRIX_I2C
@@ -37,12 +37,12 @@
     #undef TAPPING_TERM
     #define TAPPING_TERM 350
 #endif
-#define TAPPING_FORCE_HOLD
+//#define TAPPING_FORCE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
-#define PERMISSIVE_HOLD
+//#define PERMISSIVE_HOLD
 #define RETRO_SHIFT 175
 #define AUTO_SHIFT_TIMEOUT 175
-//#define RETRO_TAPPING
+#define RETRO_TAPPING
 
 #define ENCODER_DIRECTION_FLIP
 
