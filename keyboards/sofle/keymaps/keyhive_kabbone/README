@@ -1,0 +1,2 @@
+compile:
+qmk flash -kb sofle/keyhive -km keyhive_kabbone -bl avrdude-split-left
