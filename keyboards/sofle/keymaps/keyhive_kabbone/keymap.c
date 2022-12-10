@@ -259,9 +259,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SYM] = LAYOUT(
   _______    , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5 ,                  KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 ,
   KC_GRV     , KC_1   , KC_2   , KC_3   , KC_4   , KC_5  ,                  KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_F12 ,
-  _______    , KC_DLR , KC_PLUS, KC_LPRN, KC_RPRN, KC_AT ,                  KC_PIPE, KC_MINS, KC_EQL , KC_UNDS, KC_ASTR, _______,
-  DF(_QWERTY), KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_GRV, _______,_______, KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC, _______,
-                 RGB_MODE_SWIRL, RGB_VAI, RGB_VAD, RGB_TOG, _______,   KC_BSPC, KC_COLN, _______, _______, _______
+  _______    , KC_DLR , KC_PLUS, KC_LPRN, KC_RPRN, KC_AT ,                  KC_PIPE, KC_MINS, KC_EQL , KC_UNDS, KC_ASTR, KC_LT,
+  DF(_QWERTY), KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_GRV, _______,_______, KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC, KC_GT,
+                 RGB_MODE_SWIRL, _______, RGB_VAI, RGB_VAD, RGB_TOG, KC_BSPC, KC_COLN, _______, _______, _______
 ),
 /* NAV
  * ,----------------------------------------.                    ,-----------------------------------------.
